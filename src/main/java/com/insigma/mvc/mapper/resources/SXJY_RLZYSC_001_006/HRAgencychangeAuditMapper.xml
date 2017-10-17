@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insigma.mvc.dao.resources.SXJY_RLZYSC_001_006.HRAgencyChangeAuditMapper">
+  <resultMap id="BaseResultMap" type="com.insigma.mvc.model.Ef11">
+    <id column="AEF101" jdbcType="VARCHAR" property="aef101" />
+    <result column="AEF104" jdbcType="VARCHAR" property="aef104" />
+    <result column="AAB998" jdbcType="VARCHAR" property="aab998" />
+    <result column="AEF105" jdbcType="VARCHAR" property="aef105" />
+    <result column="AEF106" jdbcType="VARCHAR" property="aef106" />
+    <result column="AEF107" jdbcType="VARCHAR" property="aef107" />
+    <result column="AEF108" jdbcType="VARCHAR" property="aef108" />
+    <result column="AEF109" jdbcType="VARCHAR" property="aef109" />
+    <result column="AEF110" jdbcType="VARCHAR" property="aef110" />
+    <result column="AEF111" jdbcType="VARCHAR" property="aef111" />
+    <result column="AEF112" jdbcType="DECIMAL" property="aef112" />
+    <result column="AEF113" jdbcType="VARCHAR" property="aef113" />
+    <result column="AEF114" jdbcType="DECIMAL" property="aef114" />
+    <result column="AEF115" jdbcType="VARCHAR" property="aef115" />
+    <result column="AEF116" jdbcType="VARCHAR" property="aef116" />
+    <result column="AEF117" jdbcType="VARCHAR" property="aef117" />
+    <result column="AEF118" jdbcType="VARCHAR" property="aef118" />
+    <result column="AEF119" jdbcType="VARCHAR" property="aef119" />
+    <result column="AEF120" jdbcType="VARCHAR" property="aef120" />
+    <result column="AEF121" jdbcType="VARCHAR" property="aef121" />
+    <result column="AEF122" jdbcType="VARCHAR" property="aef122" />
+    <result column="AEF123" jdbcType="VARCHAR" property="aef123" />
+    <result column="AEF124" jdbcType="VARCHAR" property="aef124" />
+    <result column="AEF125" jdbcType="VARCHAR" property="aef125" />
+    <result column="AEF126" jdbcType="VARCHAR" property="aef126" />
+    <result column="AEF127" jdbcType="VARCHAR" property="aef127" />
+    <result column="AEF128" jdbcType="VARCHAR" property="aef128" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="AAE036" jdbcType="DATE" property="aae036" />
+    <result column="AAF011" jdbcType="VARCHAR" property="aaf011" />
+    <result column="AAE009" jdbcType="VARCHAR" property="aae009" />
+    <result column="AAE010" jdbcType="VARCHAR" property="aae010" />
+    <result column="AAE200" jdbcType="VARCHAR" property="aae200" />
+    <result column="AAE199" jdbcType="VARCHAR" property="aae199" />
+    <result column="AAE202" jdbcType="DATE" property="aae202" />
+    <result column="AAE201" jdbcType="VARCHAR" property="aae201" />
+    <result column="AAE198" jdbcType="VARCHAR" property="aae198" />
+    <result column="AAE203" jdbcType="VARCHAR" property="aae203" />
+    <result column="AAE133" jdbcType="VARCHAR" property="aae133" />
+    <result column="AAE134" jdbcType="VARCHAR" property="aae134" />
+    <result column="AAE132" jdbcType="VARCHAR" property="aae132" />
+    <result column="AAE135" jdbcType="VARCHAR" property="aae135" />
+    <result column="AAE102" jdbcType="DATE" property="aae102" />
+    <result column="AAE013" jdbcType="VARCHAR" property="aae013" />
+    <result column="AEF129" jdbcType="DATE" property="aef129" />
+    <result column="AEF130" jdbcType="VARCHAR" property="aef130" />
+    <result column="AEF131" jdbcType="VARCHAR" property="aef131" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="EAE052" jdbcType="VARCHAR" property="eae052" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="AEF133" jdbcType="VARCHAR" property="aef133" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AEF101, AEF104, AAB998, AEF105, AEF106, AEF107, AEF108, AEF109, AEF110, AEF111, AEF112, 
+    AEF113, AEF114, AEF115, AEF116, AEF117, AEF118, AEF119, AEF120, AEF121, AEF122, AEF123, 
+    AEF124, AEF125, AEF126, AEF127, AEF128, AAE011, AAE036, AAF011, AAE009, AAE010, AAE200, 
+    AAE199, AAE202, AAE201, AAE198, AAE203, AAE133, AAE134, AAE132, AAE135, AAE102, AAE013, 
+    AEF129, AEF130, AEF131, AAB301, EAE052, AAE100, AEF133
+  </sql>
+ 
+   <!-- EF11查询-机构设立审核不通过查询申报表和机构信息表-->
+  <select id="getEf11InfoNoAudit" parameterType="Ef11" resultType="Ef11">
+    select 
+    a.aef101, a.aef104, a.aab998, b.eef121,
+    (select code_name from code_value t where t.code_type='AEF105' AND code_value=a.aef105) aef105, 
+    (select code_name from code_value t where t.code_type='AEF106' AND code_value=a.aef106) aef106, 
+    a.aef107, a.aef108, 
+    (select code_name from code_value t where t.code_type='AEF109' AND code_value=a.aef109) aef109, a.aef110, a.aef111, a.aef112, 
+    (select code_name from code_value t where t.code_type='AEF113' AND code_value=a.aef113) aef113,
+     aef114, aef115, aef116, aef117, aef118, aef119, aef120, aef121, aef122, aef123, 
+    aef124, aef125, aef126, aef127, aef128, b.aae011, b.aae036, b.aaf011, b.aae009, b.aae010, b.aae200, 
+     b.aae199,  b.aae202,  b.aae201,  b.aae198,  b.aae203,  b.aae133,  b.aae134,  b.aae132,  b.aae135,  b.aae102,  b.aae013, 
+    aef129, aef130, aef131,  a.aab301, 
+    (select code_name from code_value t where t.code_type='EAE052' AND code_value=b.eae052) eae052, aae100, a.aef133, 
+    (select code_name from code_value t where t.code_type='AAB301' AND code_value=a.aef134) aef134
+    from ef11 a,ef12 b 
+    <where> 
+       a.aef101=b.aef101  and    a.AAB998 = #{aab998,jdbcType=VARCHAR}
+       and b.aae036 in (select max(c.aae036) from ef12 c where c.aef132='2' and c.aef133='1' group by c.aef101) 
+      <if test="aef104!=null">
+        and  a.aef104 like '%'||#{aef104}||'%' 
+      </if>
+      <if test="a_eae052!=null">
+        and b.eae052 in 
+        <foreach item="item" collection="a_eae052" open="(" separator="," close=")">
+            #{item}
+        </foreach> 
+      </if>
+      <if test="aab998!=null">
+        and a.AAB998 = #{aab998,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  
+   <!-- 批量审核通过 -->
+  <update id="batAuditHRAgencyRegdata"  parameterType="java.util.List" >
+      <foreach collection ="list" item="item" index= "index" open="begin" close=";end;" separator =";">
+       update ef12 
+      <set>
+            AAE200 = #{item.aae200,jdbcType=VARCHAR},
+            AAE199 = #{item.aae199,jdbcType=VARCHAR},
+            AAE202 = sysdate,
+            AAE201 = #{item.aae201,jdbcType=VARCHAR},
+            AAE198 = #{item.aae198,jdbcType=VARCHAR},
+            eae052 = #{item.eae052_1} 
+       </set>    
+            where aef132='2' and eae052=#{item.eae052_2} and aef133=#{item.aef133} and 
+            aef101=#{item.aef101}
+       </foreach>
+  </update>  
+  <!-- 单个审核通过 -->
+  <update id="singleAuditHRAgencyRegdata"  parameterType="java.util.HashMap" >
+       update ef12 
+       set  AAE200 = #{aae200,jdbcType=VARCHAR},
+            AAE199 = #{aae199,jdbcType=VARCHAR},
+            AAE202 = sysdate,
+            AAE201 = #{aae201,jdbcType=VARCHAR},
+            AAE198 = #{aae198,jdbcType=VARCHAR},
+            eae052 = #{eae052_1}
+            where aef132='2' and eae052=#{eae052_2} and aef133 = #{aef133} and 
+            eef121= #{eef121,jdbcType=VARCHAR}
+  </update> 
+    <!-- 审核不通过 -->
+  <update id="saveNotPassAuditData"  parameterType="java.util.HashMap" >
+       update ef12 
+       set  AAE200 = #{aae200,jdbcType=VARCHAR},
+            AAE199 = #{aae199,jdbcType=VARCHAR},
+            AAE202 = sysdate,
+            AAE201 = #{aae201,jdbcType=VARCHAR},
+            AAE203 = #{aae203,jdbcType=VARCHAR},
+            AAE198 = #{aae198,jdbcType=VARCHAR},
+            eae052 = #{eae052_1,jdbcType=VARCHAR}
+            where aef132='2' and eae052=#{eae052_2,jdbcType=VARCHAR} and aef133 ='1' and 
+            eef121= #{eef121,jdbcType=VARCHAR}
+  </update> 
+  
+   <update id="updateEf11ForEae052ByAef101" parameterType="com.insigma.mvc.model.Ef12">
+  	 UPDATE EF11 SET EAE052 = #{eae052,jdbcType=VARCHAR} WHERE aef101 IN
+    <foreach collection="selectnodes" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+  </update>
+  <update id="updateEf11ForEae052ByAef102" parameterType="com.insigma.mvc.model.Ef12">
+  	 UPDATE EF12 SET EAE052 = #{eae052,jdbcType=VARCHAR} WHERE  aef101 IN
+    <foreach collection="selectnodes" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+  </update>
+  
+   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    a.aef101, a.aef104, a.aab998,
+    (select code_name from code_value t where t.code_type='AEF105' AND code_value=a.aef105) aef105, 
+    (select code_name from code_value t where t.code_type='AEF106' AND code_value=a.aef106) aef106, 
+    (select code_name from code_value t where t.code_type='AAB301' AND code_value=a.aef107) aef107, a.aef108, 
+    (select code_name from code_value t where t.code_type='AEF109' AND code_value=a.aef109) aef109, a.aef110, a.aef111, a.aef112, 
+    (select code_name from code_value t where t.code_type='AEF113' AND code_value=a.aef113) aef113,
+     aef114, aef115, aef116, aef117, aef118, aef119, aef120, aef121, aef122, aef123, 
+    aef124, aef125, aef126, aef127, aef128, a.aae011, a.aae036, a.aaf011, a.aae009, a.aae010, a.aae200,
+     a.aae199,  a.aae202,  a.aae201,  a.aae198,  a.aae203,  a.aae133,  a.aae134,  a.aae132,  a.aae135,  a.aae102,  a.aae013, 
+      to_char(aef129,'yyyy-MM-dd') aef129, aef130, aef131,  a.aab301, aae100, a.aef133, 
+    (select code_name from code_value t where t.code_type='AAB301' AND code_value=a.aef134) aef134
+    from EF11 a
+    where a.AAB998 = #{aab998,jdbcType=VARCHAR}
+  </select> 
+  <!-- EF11查询 -->
+  <select id="getEf11List" parameterType="Ef11" resultType="Ef11">
+   select 
+    a.aef101, a.aef104, a.aab998, b.eef121,
+    (select code_name from code_value t where t.code_type='AEF105' AND code_value=a.aef105) aef105, 
+    (select code_name from code_value t where t.code_type='AEF106' AND code_value=a.aef106) aef106, 
+    a.aef107, a.aef108, 
+    (select code_name from code_value t where t.code_type='AEF109' AND code_value=a.aef109) aef109, a.aef110, a.aef111, a.aef112, 
+    (select code_name from code_value t where t.code_type='AEF113' AND code_value=a.aef113) aef113,
+     aef114, aef115, aef116, aef117, aef118, aef119, aef120, aef121, aef122, aef123, 
+    aef124, aef125, aef126, aef127, aef128, b.aae011, b.aae036, b.aaf011, b.aae009, b.aae010, b.aae200, 
+     b.aae199,  b.aae202,  b.aae201,  b.aae198,  b.aae203,  b.aae133,  b.aae134,  b.aae132,  b.aae135,  b.aae102,  b.aae013, 
+    aef129, aef130, aef131,  a.aab301, 
+    (select code_name from code_value t where t.code_type='EAE052' AND code_value=b.eae052) eae052, aae100, a.aef133, 
+    (select code_name from code_value t where t.code_type='AAB301' AND code_value=a.aef134) aef134
+    from ef11 a,ef12 b 
+    <where> 
+       a.aef101=b.aef101  
+       and b.aae036 in (select max(c.aae036) from ef12 c where c.aef132='2' and c.aef133='1' group by c.aef101) 
+       <if test="eae052==null">
+        and b.eae052 = '0'
+      </if>
+      <if test="aef104!=null">
+        and  a.aef104 like '%'||#{aef104}||'%' 
+      </if>
+      <if test="a_eae052!=null">
+        and b.eae052 in 
+        <foreach item="item" collection="a_eae052" open="(" separator="," close=")">
+            #{item}
+        </foreach> 
+      </if>
+      <if test="aab998!=null">
+        and a.AAB998 = #{aab998,jdbcType=VARCHAR}
+      </if>
+      <if test="aab301!=null">
+        and  a.aab301 = #{aab301,jdbcType=VARCHAR} 
+      </if>
+    </where>
+   </select>
+  <!-- EF11、Ef12联合查询 -->
+  <select id="getEf12List" parameterType="Ef11" resultType="Ef11">
+     select 
+    a.aef101, a.aef104, a.aab998, b.eef121,
+    (select code_name from code_value t where t.code_type='AEF105' AND code_value=a.aef105) aef105, 
+    (select code_name from code_value t where t.code_type='AEF106' AND code_value=a.aef106) aef106, 
+    a.aef107, a.aef108, 
+    (select code_name from code_value t where t.code_type='AEF109' AND code_value=a.aef109) aef109, a.aef110, a.aef111, a.aef112, 
+    (select code_name from code_value t where t.code_type='AEF113' AND code_value=a.aef113) aef113,
+     aef114, aef115, aef116, aef117, aef118, aef119, aef120, aef121, aef122, aef123, 
+    aef124, aef125, aef126, aef127, aef128, b.aae011, b.aae036, b.aaf011, b.aae009, b.aae010, b.aae200, 
+     b.aae199,  b.aae202,  b.aae201,  b.aae198,  b.aae203,  b.aae133,  b.aae134,  b.aae132,  b.aae135,  b.aae102,  b.aae013, 
+    aef129, aef130, aef131,  a.aab301, 
+    (select code_name from code_value t where t.code_type='EAE052' AND code_value=b.eae052) eae052, aae100, a.aef133, 
+    (select code_name from code_value t where t.code_type='AAB301' AND code_value=a.aef134) aef134
+    from ef11 a,ef12 b 
+    <where> 
+       a.aef101=b.aef101  and a.aae100='1'   
+       and b.aae036 in (select max(c.aae036) from ef12 c where c.aef132=#{aef132} and c.aef133=#{aef133} group by c.aef101) 
+       <if test="eae052==null">
+        and b.eae052 = '0'
+      </if>
+      <if test="aef104!=null">
+        and  a.aef104 like '%'||#{aef104}||'%' 
+      </if>
+      <if test="a_eae052!=null">
+        and b.eae052 in 
+        <foreach item="item" collection="a_eae052" open="(" separator="," close=")">
+            #{item}
+        </foreach> 
+        <if test="aab301!=null">
+        and  a.aab301 = #{aab301,jdbcType=VARCHAR} 
+        </if>
+      </if>
+    </where>
+  </select>
+  
+  <select id="selectEf11ByAef104" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select 
+    <include refid="Base_Column_List" />
+    from EF11
+    where AEF104 = #{aef104,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from EF11
+    where AEF101 = #{aef101,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.insigma.mvc.model.Ef11">
+    insert into EF11 (AEF101, AEF104, AAB998, 
+      AEF105, AEF106, AEF107, 
+      AEF108, AEF109, AEF110, 
+      AEF111, AEF112, AEF113, 
+      AEF114, AEF115, AEF116, 
+      AEF117, AEF118, AEF119, 
+      AEF120, AEF121, AEF122, 
+      AEF123, AEF124, AEF125, 
+      AEF126, AEF127, AEF128, 
+      AAE011, AAE036, AAF011, 
+      AAE009, AAE010, AAE200, 
+      AAE199, AAE202, AAE201, 
+      AAE198, AAE203, AAE133, 
+      AAE134, AAE132, AAE135, 
+      AAE102, AAE013, AEF129, AEF130, 
+      AEF131, AAB301, EAE052, AAE100, AEF133)
+    values (#{aef101,jdbcType=VARCHAR}, #{aef104,jdbcType=VARCHAR}, #{aab998,jdbcType=VARCHAR}, 
+      #{aef105,jdbcType=VARCHAR}, #{aef106,jdbcType=VARCHAR}, #{aef107,jdbcType=VARCHAR}, 
+      #{aef108,jdbcType=VARCHAR}, #{aef109,jdbcType=VARCHAR}, #{aef110,jdbcType=VARCHAR}, 
+      #{aef111,jdbcType=VARCHAR}, #{aef112,jdbcType=DECIMAL}, #{aef113,jdbcType=VARCHAR}, 
+      #{aef114,jdbcType=DECIMAL}, #{aef115,jdbcType=VARCHAR}, #{aef116,jdbcType=VARCHAR}, 
+      #{aef117,jdbcType=VARCHAR}, #{aef118,jdbcType=VARCHAR}, #{aef119,jdbcType=VARCHAR}, 
+      #{aef120,jdbcType=VARCHAR}, #{aef121,jdbcType=VARCHAR}, #{aef122,jdbcType=VARCHAR}, 
+      #{aef123,jdbcType=VARCHAR}, #{aef124,jdbcType=VARCHAR}, #{aef125,jdbcType=VARCHAR}, 
+      #{aef126,jdbcType=VARCHAR}, #{aef127,jdbcType=VARCHAR}, #{aef128,jdbcType=VARCHAR}, 
+      #{aae011,jdbcType=VARCHAR}, #{aae036,jdbcType=DATE}, #{aaf011,jdbcType=VARCHAR}, 
+      #{aae009,jdbcType=VARCHAR}, #{aae010,jdbcType=VARCHAR}, #{aae200,jdbcType=VARCHAR}, 
+      #{aae199,jdbcType=VARCHAR}, #{aae202,jdbcType=DATE}, #{aae201,jdbcType=VARCHAR}, 
+      #{aae198,jdbcType=VARCHAR}, #{aae203,jdbcType=VARCHAR}, #{aae133,jdbcType=VARCHAR}, 
+      #{aae134,jdbcType=VARCHAR}, #{aae132,jdbcType=VARCHAR}, #{aae135,jdbcType=VARCHAR}, 
+      #{aae102,jdbcType=DATE}, #{aae013,jdbcType=VARCHAR}, #{aef129,jdbcType=DATE}, #{aef130,jdbcType=VARCHAR}, 
+      #{aef131,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, #{eae052,jdbcType=VARCHAR}
+      , #{aae100,jdbcType=VARCHAR} ,#{aef133,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.insigma.mvc.model.Ef11">
+  <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="aef101"> 
+            SELECT SQ_AEF101.NEXTVAL from dual 
+     </selectKey>
+    insert into EF11
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aef101 != null">
+        AEF101,
+      </if>
+      <if test="aef104 != null">
+        AEF104,
+      </if>
+      <if test="aab998 != null">
+        AAB998,
+      </if>
+      <if test="aef105 != null">
+        AEF105,
+      </if>
+      <if test="aef106 != null">
+        AEF106,
+      </if>
+      <if test="aef107 != null">
+        AEF107,
+      </if>
+      <if test="aef108 != null">
+        AEF108,
+      </if>
+      <if test="aef109 != null">
+        AEF109,
+      </if>
+      <if test="aef110 != null">
+        AEF110,
+      </if>
+      <if test="aef111 != null">
+        AEF111,
+      </if>
+      <if test="aef112 != null">
+        AEF112,
+      </if>
+      <if test="aef113 != null">
+        AEF113,
+      </if>
+      <if test="aef114 != null">
+        AEF114,
+      </if>
+      <if test="aef115 != null">
+        AEF115,
+      </if>
+      <if test="aef116 != null">
+        AEF116,
+      </if>
+      <if test="aef117 != null">
+        AEF117,
+      </if>
+      <if test="aef118 != null">
+        AEF118,
+      </if>
+      <if test="aef119 != null">
+        AEF119,
+      </if>
+      <if test="aef120 != null">
+        AEF120,
+      </if>
+      <if test="aef121 != null">
+        AEF121,
+      </if>
+      <if test="aef122 != null">
+        AEF122,
+      </if>
+      <if test="aef123 != null">
+        AEF123,
+      </if>
+      <if test="aef124 != null">
+        AEF124,
+      </if>
+      <if test="aef125 != null">
+        AEF125,
+      </if>
+      <if test="aef126 != null">
+        AEF126,
+      </if>
+      <if test="aef127 != null">
+        AEF127,
+      </if>
+      <if test="aef128 != null">
+        AEF128,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="aaf011 != null">
+        AAF011,
+      </if>
+      <if test="aae009 != null">
+        AAE009,
+      </if>
+      <if test="aae010 != null">
+        AAE010,
+      </if>
+      <if test="aae200 != null">
+        AAE200,
+      </if>
+      <if test="aae199 != null">
+        AAE199,
+      </if>
+      <if test="aae202 != null">
+        AAE202,
+      </if>
+      <if test="aae201 != null">
+        AAE201,
+      </if>
+      <if test="aae198 != null">
+        AAE198,
+      </if>
+      <if test="aae203 != null">
+        AAE203,
+      </if>
+      <if test="aae133 != null">
+        AAE133,
+      </if>
+      <if test="aae134 != null">
+        AAE134,
+      </if>
+      <if test="aae132 != null">
+        AAE132,
+      </if>
+      <if test="aae135 != null">
+        AAE135,
+      </if>
+      <if test="aae102 != null">
+        AAE102,
+      </if>
+      <if test="aae013 != null">
+        AAE013,
+      </if>
+      <if test="aef129 != null">
+        AEF129,
+      </if>
+      <if test="aef130 != null">
+        AEF130,
+      </if>
+      <if test="aef131 != null">
+        AEF131,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="eae052 != null">
+        EAE052,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="aef133 != null">
+        AEF133,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aef101 != null">
+        #{aef101,jdbcType=VARCHAR},
+      </if>
+      <if test="aef104 != null">
+        #{aef104,jdbcType=VARCHAR},
+      </if>
+      <if test="aab998 != null">
+        #{aab998,jdbcType=VARCHAR},
+      </if>
+      <if test="aef105 != null">
+        #{aef105,jdbcType=VARCHAR},
+      </if>
+      <if test="aef106 != null">
+        #{aef106,jdbcType=VARCHAR},
+      </if>
+      <if test="aef107 != null">
+        #{aef107,jdbcType=VARCHAR},
+      </if>
+      <if test="aef108 != null">
+        #{aef108,jdbcType=VARCHAR},
+      </if>
+      <if test="aef109 != null">
+        #{aef109,jdbcType=VARCHAR},
+      </if>
+      <if test="aef110 != null">
+        #{aef110,jdbcType=VARCHAR},
+      </if>
+      <if test="aef111 != null">
+        #{aef111,jdbcType=VARCHAR},
+      </if>
+      <if test="aef112 != null">
+        #{aef112,jdbcType=DECIMAL},
+      </if>
+      <if test="aef113 != null">
+        #{aef113,jdbcType=VARCHAR},
+      </if>
+      <if test="aef114 != null">
+        #{aef114,jdbcType=DECIMAL},
+      </if>
+      <if test="aef115 != null">
+        #{aef115,jdbcType=VARCHAR},
+      </if>
+      <if test="aef116 != null">
+        #{aef116,jdbcType=VARCHAR},
+      </if>
+      <if test="aef117 != null">
+        #{aef117,jdbcType=VARCHAR},
+      </if>
+      <if test="aef118 != null">
+        #{aef118,jdbcType=VARCHAR},
+      </if>
+      <if test="aef119 != null">
+        #{aef119,jdbcType=VARCHAR},
+      </if>
+      <if test="aef120 != null">
+        #{aef120,jdbcType=VARCHAR},
+      </if>
+      <if test="aef121 != null">
+        #{aef121,jdbcType=VARCHAR},
+      </if>
+      <if test="aef122 != null">
+        #{aef122,jdbcType=VARCHAR},
+      </if>
+      <if test="aef123 != null">
+        #{aef123,jdbcType=VARCHAR},
+      </if>
+      <if test="aef124 != null">
+        #{aef124,jdbcType=VARCHAR},
+      </if>
+      <if test="aef125 != null">
+        #{aef125,jdbcType=VARCHAR},
+      </if>
+      <if test="aef126 != null">
+        #{aef126,jdbcType=VARCHAR},
+      </if>
+      <if test="aef127 != null">
+        #{aef127,jdbcType=VARCHAR},
+      </if>
+      <if test="aef128 != null">
+        #{aef128,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=DATE},
+      </if>
+      <if test="aaf011 != null">
+        #{aaf011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae009 != null">
+        #{aae009,jdbcType=VARCHAR},
+      </if>
+      <if test="aae010 != null">
+        #{aae010,jdbcType=VARCHAR},
+      </if>
+      <if test="aae200 != null">
+        #{aae200,jdbcType=VARCHAR},
+      </if>
+      <if test="aae199 != null">
+        #{aae199,jdbcType=VARCHAR},
+      </if>
+      <if test="aae202 != null">
+        #{aae202,jdbcType=DATE},
+      </if>
+      <if test="aae201 != null">
+        #{aae201,jdbcType=VARCHAR},
+      </if>
+      <if test="aae198 != null">
+        #{aae198,jdbcType=VARCHAR},
+      </if>
+      <if test="aae203 != null">
+        #{aae203,jdbcType=VARCHAR},
+      </if>
+      <if test="aae133 != null">
+        #{aae133,jdbcType=VARCHAR},
+      </if>
+      <if test="aae134 != null">
+        #{aae134,jdbcType=VARCHAR},
+      </if>
+      <if test="aae132 != null">
+        #{aae132,jdbcType=VARCHAR},
+      </if>
+      <if test="aae135 != null">
+        #{aae135,jdbcType=VARCHAR},
+      </if>
+      <if test="aae102 != null">
+        #{aae102,jdbcType=DATE},
+      </if>
+      <if test="aae013 != null">
+        #{aae013,jdbcType=VARCHAR},
+      </if>
+      <if test="aef129 != null">
+        #{aef129,jdbcType=DATE},
+      </if>
+      <if test="aef130 != null">
+        #{aef130,jdbcType=VARCHAR},
+      </if>
+      <if test="aef131 != null">
+        #{aef131,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="eae052 != null">
+        #{eae052,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="aef133 != null">
+        #{aef133,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.insigma.mvc.model.Ef11">
+    update EF11
+    <set>
+      <if test="aef104 != null">
+        AEF104 = #{aef104,jdbcType=VARCHAR},
+      </if>
+      <if test="aab998 != null">
+        AAB998 = #{aab998,jdbcType=VARCHAR},
+      </if>
+      <if test="aef105 != null">
+        AEF105 = #{aef105,jdbcType=VARCHAR},
+      </if>
+      <if test="aef106 != null">
+        AEF106 = #{aef106,jdbcType=VARCHAR},
+      </if>
+      <if test="aef107 != null">
+        AEF107 = #{aef107,jdbcType=VARCHAR},
+      </if>
+      <if test="aef108 != null">
+        AEF108 = #{aef108,jdbcType=VARCHAR},
+      </if>
+      <if test="aef109 != null">
+        AEF109 = #{aef109,jdbcType=VARCHAR},
+      </if>
+      <if test="aef110 != null">
+        AEF110 = #{aef110,jdbcType=VARCHAR},
+      </if>
+      <if test="aef111 != null">
+        AEF111 = #{aef111,jdbcType=VARCHAR},
+      </if>
+      <if test="aef112 != null">
+        AEF112 = #{aef112,jdbcType=DECIMAL},
+      </if>
+      <if test="aef113 != null">
+        AEF113 = #{aef113,jdbcType=VARCHAR},
+      </if>
+      <if test="aef114 != null">
+        AEF114 = #{aef114,jdbcType=DECIMAL},
+      </if>
+      <if test="aef115 != null">
+        AEF115 = #{aef115,jdbcType=VARCHAR},
+      </if>
+      <if test="aef116 != null">
+        AEF116 = #{aef116,jdbcType=VARCHAR},
+      </if>
+      <if test="aef117 != null">
+        AEF117 = #{aef117,jdbcType=VARCHAR},
+      </if>
+      <if test="aef118 != null">
+        AEF118 = #{aef118,jdbcType=VARCHAR},
+      </if>
+      <if test="aef119 != null">
+        AEF119 = #{aef119,jdbcType=VARCHAR},
+      </if>
+      <if test="aef120 != null">
+        AEF120 = #{aef120,jdbcType=VARCHAR},
+      </if>
+      <if test="aef121 != null">
+        AEF121 = #{aef121,jdbcType=VARCHAR},
+      </if>
+      <if test="aef122 != null">
+        AEF122 = #{aef122,jdbcType=VARCHAR},
+      </if>
+      <if test="aef123 != null">
+        AEF123 = #{aef123,jdbcType=VARCHAR},
+      </if>
+      <if test="aef124 != null">
+        AEF124 = #{aef124,jdbcType=VARCHAR},
+      </if>
+      <if test="aef125 != null">
+        AEF125 = #{aef125,jdbcType=VARCHAR},
+      </if>
+      <if test="aef126 != null">
+        AEF126 = #{aef126,jdbcType=VARCHAR},
+      </if>
+      <if test="aef127 != null">
+        AEF127 = #{aef127,jdbcType=VARCHAR},
+      </if>
+      <if test="aef128 != null">
+        AEF128 = #{aef128,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        AAE036 = #{aae036,jdbcType=DATE},
+      </if>
+      <if test="aaf011 != null">
+        AAF011 = #{aaf011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae009 != null">
+        AAE009 = #{aae009,jdbcType=VARCHAR},
+      </if>
+      <if test="aae010 != null">
+        AAE010 = #{aae010,jdbcType=VARCHAR},
+      </if>
+      <if test="aae200 != null">
+        AAE200 = #{aae200,jdbcType=VARCHAR},
+      </if>
+      <if test="aae199 != null">
+        AAE199 = #{aae199,jdbcType=VARCHAR},
+      </if>
+      <if test="aae202 != null">
+        AAE202 = #{aae202,jdbcType=DATE},
+      </if>
+      <if test="aae201 != null">
+        AAE201 = #{aae201,jdbcType=VARCHAR},
+      </if>
+      <if test="aae198 != null">
+        AAE198 = #{aae198,jdbcType=VARCHAR},
+      </if>
+      <if test="aae203 != null">
+        AAE203 = #{aae203,jdbcType=VARCHAR},
+      </if>
+      <if test="aae133 != null">
+        AAE133 = #{aae133,jdbcType=VARCHAR},
+      </if>
+      <if test="aae134 != null">
+        AAE134 = #{aae134,jdbcType=VARCHAR},
+      </if>
+      <if test="aae132 != null">
+        AAE132 = #{aae132,jdbcType=VARCHAR},
+      </if>
+      <if test="aae135 != null">
+        AAE135 = #{aae135,jdbcType=VARCHAR},
+      </if>
+      <if test="aae102 != null">
+        AAE102 = #{aae102,jdbcType=DATE},
+      </if>
+      <if test="aae013 != null">
+        AAE013 = #{aae013,jdbcType=VARCHAR},
+      </if>
+      <if test="aef129 != null">
+        AEF129 = #{aef129,jdbcType=DATE},
+      </if>
+      <if test="aef130 != null">
+        AEF130 = #{aef130,jdbcType=VARCHAR},
+      </if>
+      <if test="aef131 != null">
+        AEF131 = #{aef131,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="eae052 != null">
+        EAE052 = #{eae052,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="aef133 != null">
+        AEF133 = #{aef133,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AEF101 = #{aef101,jdbcType=VARCHAR}
+  </update>
+  <!-- 单个审核通过-->
+  <update id="updateByPrimaryKey" parameterType="String">
+    update ef12 
+       set 
+            AAE202 = sysdate,
+            eae052 = '1'
+            where aef132='2'  and  eae052='0'
+            and
+            aef101= #{aef101,jdbcType=VARCHAR}
+  </update>
+   <!--批量审核通过-->
+  <update id="batUpdateData"  parameterType="String" >
+    update EF12 ef12
+    <set>    
+         <if test="aae200 != null">
+            AAE200 = #{aae200,jdbcType=VARCHAR},
+         </if>
+         <if test="aae199 != null">
+            AAE199 = #{aae199,jdbcType=VARCHAR},
+         </if>
+       
+         <if test="aae201 != null">
+            AAE201 = #{aae201,jdbcType=VARCHAR},
+         </if>
+         <if test="aae198 != null">
+            AAE198 = #{aae198,jdbcType=VARCHAR},
+         </if>
+            eae052='1',
+            aef133='1'  
+     </set>
+    where aef132='2'  and  eae052='0'
+            and
+            aef101= #{aef101,jdbcType=VARCHAR}
+            and
+       ef12.aef101 in
+       <foreach item="item" collection="selectnode" open="(" separator="," close=")">
+            #{item}
+       </foreach>
+       and exists
+       (select * from EF11 ef11  where ef11.aef101=ef12.aef101 and ef11.aae100='1') 
+  </update>
+</mapper>

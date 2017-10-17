@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insigma.mvc.dao.sysmanager.perm.SysPermMapper">
+    <!-- 查询列表 -->
+    <select id="getPermTreeList"  resultType="SPermission" >
+		select 
+		permissionid id ,
+		name, 
+		parentid pid
+		from 
+		s_permission 
+		order by sortnum
+	</select>
+	
+	<!-- 通过权限id获取相关权限数据 -->
+	<select id="getPermDataById"  resultType="SPermission" parameterType="String" >
+		select 
+		    permissionid  ,
+		    name, 
+		    code,
+		    describe,
+		    parentid,
+		    url,
+		    type,
+		    (select name from s_permission t where t.permissionid=a.parentid) parentname,
+		    enabled,
+		    sortnum,
+		    updatetime,
+		    iconcss,
+		    enabled 
+		    from 
+		    s_permission  a 
+		where permissionid=#{permissionid}
+	</select>
+	
+	
+	<!-- 通过代码编号获取权限相关数据 判断权限编号是否重复 -->
+	<select id="isPermCodeExist"  resultType="SPermission" parameterType="SPermission" >
+		select code from s_permission a  where code=#{code} 
+		<if test="permissionid != null and  permissionid!=''"> and a.permissionid&lt;&gt;#{permissionid}</if>
+	</select>
+	
+	
+	<!-- 通过代码编号获取权限相关数据 判断url是否重复 -->
+	<select id="isPermUrlExist"  resultType="SPermission" parameterType="SPermission" >
+		select code from s_permission a  where url=#{url} and url!='#'
+		<if test="permissionid != null and  permissionid!=''"> and a.permissionid&lt;&gt;#{permissionid}</if>
+	</select>
+	
+	<!-- 判断当前权限节点是否有子结点 -->
+	<select id="getPermListDataByParentid"  resultType="SPermission" parameterType="String" >
+		select code from s_permission a  where parentid=#{parentid}
+	</select>
+	
+	<!-- 通过权限节点删除权限相关数据 -->
+	<delete id="deletePermDataById">
+	    delete from s_permission s where s.permissionid=#{permissionid}
+	</delete>
+	
+	
+	<!-- 保存 -->
+	<insert id="savePermissionData"  parameterType="SPermission">
+	    <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="permissionid"> 
+            SELECT sys_guid() from dual 
+        </selectKey>
+		insert into s_permission(permissionid,parentid,code,name,type,url,describe,sortnum,updatetime,iconcss,enabled)
+		values (#{permissionid},#{parentid},#{code},#{name},#{type},#{url},#{describe},#{sortnum},sysdate,#{iconcss},#{enabled})
+	</insert>
+	
+	<!-- 更新-->
+	<update id="updatePermissionData" parameterType="SPermission">
+		update s_permission t 
+		  <set>
+	      <if test="name != null and name!='' ">t.name=#{name},</if>
+	      <if test="code != null and code !='' ">t.code=#{code},</if>
+	      <if test="describe != null and describe!=''">t.describe=#{describe},</if>
+	      <if test="type != null and type!=''">type=#{type},</if>
+	      <if test="url != null and url!=''">url=#{url},</if>
+	      <if test="sortnum != null and sortnum!=''">sortnum=#{sortnum},</if>
+	      <if test="iconcss != null and iconcss!=''">iconcss=#{iconcss},</if>
+	      <if test="enabled != null and enabled!=''">enabled=#{enabled},</if>
+	      updatetime=sysdate 
+	    </set>
+        where t.permissionid=#{permissionid}
+	</update>
+	
+</mapper>

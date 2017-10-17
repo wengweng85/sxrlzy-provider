@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insigma.mvc.dao.resources.SXJY_RLZYSC_009_001.UserInfoManageMapper">
+  <resultMap id="BaseResultMap" type="com.insigma.mvc.model.Ec12">
+    <id column="EEC121" jdbcType="VARCHAR" property="eec121" />
+    <result column="AEF101" jdbcType="VARCHAR" property="aef101" />
+    <result column="AEC101" jdbcType="VARCHAR" property="aec101" />
+    <result column="AEC102" jdbcType="VARCHAR" property="aec102" />
+    <result column="AEC103" jdbcType="VARCHAR" property="aec103" />
+    <result column="AAB998" jdbcType="VARCHAR" property="aab998" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EEC121, AEF101, AEC101, AEC102, AEC103, AAB998, AAB301
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EC12
+    where EEC121 = #{eec121,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据用户名查询业务用户表 -->
+  <select id="selectUserInfoByAec101" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EC12
+    where AEC101 = #{aec101,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据用户名查询系统用户表 -->
+  <select id="selectSysUserInfoByAec101" parameterType="java.lang.String" resultType="com.insigma.mvc.model.SUser">
+    select 
+    username,password 
+    from s_user
+    where username = #{aec101,jdbcType=VARCHAR}
+  </select>
+  <!-- 查询用户名密码是否正确 -->
+  <select id="getHRAgencyUserPwdById"  resultType="com.insigma.mvc.model.SUser">
+    select 
+      username,password 
+    from v_user
+    where username = #{aec101,jdbcType=VARCHAR} and password = #{aec102,jdbcType=VARCHAR} 
+  </select>
+  <!-- 查询机构申报用户列表 -->
+  <select id="getHRAgencyUserInfoList" parameterType="Ec12" resultType="Ec12">
+        select  a.eec121,a.aec101,a.aec102,b.aab998,b.aef104,a.aab301  from ec12 a,ef11_declare b   
+    <where> 
+       a.aab998=b.aab998
+      <if test="aef104!=null">
+        and  b.aef104 like '%'||#{aef104}||'%' 
+      </if>
+      <if test="aec101!=null">
+        and a.aec101 = #{aec101,jdbcType=VARCHAR}
+      </if>
+      <if test="aab301!=null">
+        and  b.aab301 = #{aab301,jdbcType=VARCHAR} 
+      </if>
+    </where>
+  </select>
+  <!-- 判断当前登录用户是否已经录入成功机构信息 -->  
+  <select id="selectAgencyUserOnlyByAec101" parameterType="java.lang.String" resultType="Ec12">
+      select a.aef135,a.aab998  from ef11_declare a,ec12 b  where a.aab998=b.aab998 and b.aec101=#{aec101,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from EC12
+    where EEC121 = #{eec121,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.insigma.mvc.model.Ec12">
+    insert into EC12 (EEC121, AEF101, AEC101, 
+      AEC102, AEC103, AAB998, 
+      AAB301)
+    values (#{eec121,jdbcType=VARCHAR}, #{aef101,jdbcType=VARCHAR}, #{aec101,jdbcType=VARCHAR}, 
+      #{aec102,jdbcType=VARCHAR}, #{aec103,jdbcType=VARCHAR}, #{aab998,jdbcType=VARCHAR}, 
+      #{aab301,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.insigma.mvc.model.Ec12">
+    <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="eec121"> 
+            SELECT sys_guid() from dual 
+    </selectKey>
+    insert into EC12
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eec121 != null">
+        EEC121,
+      </if>
+      <if test="aef101 != null">
+        AEF101,
+      </if>
+      <if test="aec101 != null">
+        AEC101,
+      </if>
+      <if test="aec102 != null">
+        AEC102,
+      </if>
+      <if test="aec103 != null">
+        AEC103,
+      </if>
+      <if test="aab998 != null">
+        AAB998,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eec121 != null">
+        #{eec121,jdbcType=VARCHAR},
+      </if>
+      <if test="aef101 != null">
+        #{aef101,jdbcType=VARCHAR},
+      </if>
+      <if test="aec101 != null">
+        #{aec101,jdbcType=VARCHAR},
+      </if>
+      <if test="aec102 != null">
+        #{aec102,jdbcType=VARCHAR},
+      </if>
+      <if test="aec103 != null">
+        #{aec103,jdbcType=VARCHAR},
+      </if>
+      <if test="aab998 != null">
+        #{aab998,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.insigma.mvc.model.Ec12">
+    update EC12
+    <set>
+      <if test="aef101 != null">
+        AEF101 = #{aef101,jdbcType=VARCHAR},
+      </if>
+      <if test="aec101 != null">
+        AEC101 = #{aec101,jdbcType=VARCHAR},
+      </if>
+      <if test="aec102 != null">
+        AEC102 = #{aec102,jdbcType=VARCHAR},
+      </if>
+      <if test="aec103 != null">
+        AEC103 = #{aec103,jdbcType=VARCHAR},
+      </if>
+      <if test="aab998 != null">
+        AAB998 = #{aab998,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EEC121 = #{eec121,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据主键更新用户表信息 -->
+  <update id="updateByPrimaryKey" parameterType="com.insigma.mvc.model.Ec12">
+    update EC12
+    set AEF101 = #{aef101,jdbcType=VARCHAR},
+      AEC101 = #{aec101,jdbcType=VARCHAR},
+      AEC102 = #{aec102,jdbcType=VARCHAR},
+      AEC103 = #{aec103,jdbcType=VARCHAR},
+      AAB998 = #{aab998,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR}
+    where EEC121 = #{eec121,jdbcType=VARCHAR}
+  </update>
+  <!-- 修改业务用户密码 -->
+  <update id="updateEc12ByAec101" parameterType="com.insigma.mvc.model.Ec12">
+    update EC12
+    set 
+      AEC102 = #{aec102,jdbcType=VARCHAR}
+    where AEC101 = #{aec101,jdbcType=VARCHAR}
+  </update>
+  <!-- 修改系统用户密码 -->
+  <update id="updateSUserByAec101" parameterType="com.insigma.mvc.model.SUser">
+    update s_user
+    set 
+      password = #{password,jdbcType=VARCHAR}
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+  <!-- 用户密码批量重置 -->
+  <update id="updateBatResetPwdEc12Data"  parameterType="java.util.List" >
+      <foreach collection ="list" item="item" index= "index" open="begin" close=";end;" separator =";">
+       update ec12 
+        <set>
+            AEC102 = #{item.aec102,jdbcType=VARCHAR}
+       </set>    
+            where eec121=#{item.eec121,jdbcType=VARCHAR}
+       </foreach>
+  </update>  
+  <!-- 密码重置 -->
+  <update id="updateResetPwdEc12Data"  parameterType="com.insigma.mvc.model.Ec12" >
+       update ec12 
+       set AEC102 = #{aec102,jdbcType=VARCHAR}
+       where eec121= #{eec121,jdbcType=VARCHAR}
+  </update>
+  <!-- 修改业务用户密码 -->
+  <update id="updateEc12ForAab998ByAec101" parameterType="com.insigma.mvc.model.Ec12">
+    update EC12
+    set 
+      AAB998 = #{aab998,jdbcType=VARCHAR}
+    where AEC101 = #{aec101,jdbcType=VARCHAR}
+  </update>
+</mapper>

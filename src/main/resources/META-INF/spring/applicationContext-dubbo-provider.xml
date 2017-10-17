@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="dubbo-hessian-provider" />
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	
+	<!-- <dubbo:protocol name="dubbo" port="20880" ></dubbo:protocol>  -->
+	<!-- <dubbo:protocol name="dubbo" port="20880" ></dubbo:protocol> -->
+	<dubbo:registry address="${zookeeperurl}" check="false"/>
+	<!-- <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	
+	<dubbo:protocol name="hessian" port="8080" server="servlet" contextpath="sxrlzy-provider/hessian"></dubbo:protocol>
+	
+	<!--common-->
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.common.fileupload.FileLoadService"  ref="FileLoadService"  timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.init.InitService"   ref="InitService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.login.LoginService"   ref="LoginService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.log.LogService"   ref="LogService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.common.suggest.SuggestSearchService"   ref="SuggestSearchService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.index.IndexService"   ref="IndexService" timeout="100000"/>
+    
+    <!-- demo -->
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.demo.DemoAc01Service"   ref="DemoAc01Service" timeout="100000"/>
+    
+    
+    <!--resources-->
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_001.HRServicesRegEf11Service"   ref="HRServicesRegEf11Service" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.BusinessRecruitmentEe18Service"   ref="BusinessRecruitmentEe18Service" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.BusinessReportEe16Service"   ref="BusinessReportEe16Service" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_003.RecruitmentDataEe15Service"   ref="RecruitmentDataEe15Service" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_005.HRAgencyRegAuditService"   ref="HRAgencyRegAuditService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_006.HRAgencyChangeAuditService"   ref="HRAgencyChangeAuditService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_007.HRAgencyReportService"   ref="HRAgencyReportService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_001_008.HRAgencyDeleteAuditService"   ref="HRAgencyDeleteAuditService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_002_001.HRAgencyApplyService"   ref="HRAgencyApplyService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_002_002.HRAgencyEditApplyService"   ref="HRAgencyEditApplyService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_002_004.HRAgencyCancelApplyService"   ref="HRAgencyCancelApplyService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_003_001.AnnouncementInformEe11Service"   ref="AnnouncementInformEe11Service" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_004_001.AgencyOtherDataEntryService"   ref="AgencyOtherDataEntryService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_004_002.RecruitDataEntryService"   ref="RecruitDataEntryService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_005_001.ComplaintsReportManageService"   ref="ComplaintsReportManageService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_006_001.InfoReleaseManageService"   ref="InfoReleaseManageService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_006_003.OpinionSuggetionEe17Service"   ref="OpinionSuggetionEe17Service" timeout="100000"/>
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_007_002.InfoBusinessEE18Service"   ref="InfoBusinessEE18Service" timeout="100000"/>
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.resources.SXJY_RLZYSC_009_001.UserInfoManageService"   ref="UserInfoManageService" timeout="100000"/>
+	
+	<!-- sys -->
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.sysmanager.codetype.SysCodeTypeService"   ref="SysCodeTypeService" timeout="100000"/>
+    <dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.sysmanager.perm.SysPermService"   ref="SysPermService" timeout="100000"/>
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.sysmanager.role.SysRoleService"   ref="SysRoleService" timeout="100000"/>
+	<dubbo:service protocol="hessian"  interface="com.insigma.mvc.service.sysmanager.userrole.SysUserRoleService"   ref="SysUserRoleService" timeout="100000"/>
+</beans>

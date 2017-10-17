@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.insigma.mvc.dao.resources.SXJY_RLZYSC_003_001.AnnouncementInformEe11Mapper">
+  <resultMap id="BaseResultMap" type="com.insigma.mvc.model.Ee11">
+    <id column="EEE111" jdbcType="VARCHAR" property="eee111" />
+    <result column="AEF101" jdbcType="VARCHAR" property="aef101" />
+    <result column="AEE102" jdbcType="VARCHAR" property="aee102" />
+    <result column="AEE103" jdbcType="VARCHAR" property="aee103" />
+    <result column="AEE104" jdbcType="VARCHAR" property="aee104" />
+    <result column="AEE105" jdbcType="DATE" property="aee105" />
+    <result column="AEE106" jdbcType="DATE" property="aee106" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="AEE107" jdbcType="VARCHAR" property="aee107" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="AAE036" jdbcType="DATE" property="aae036" />
+    <result column="AAF011" jdbcType="VARCHAR" property="aaf011" />
+    <result column="AAE009" jdbcType="VARCHAR" property="aae009" />
+    <result column="AAE010" jdbcType="VARCHAR" property="aae010" />
+    <result column="AAE200" jdbcType="VARCHAR" property="aae200" />
+    <result column="AAE199" jdbcType="VARCHAR" property="aae199" />
+    <result column="AAE202" jdbcType="DATE" property="aae202" />
+    <result column="AAE201" jdbcType="VARCHAR" property="aae201" />
+    <result column="AAE198" jdbcType="VARCHAR" property="aae198" />
+    <result column="AAE203" jdbcType="VARCHAR" property="aae203" />
+    <result column="AAE133" jdbcType="VARCHAR" property="aae133" />
+    <result column="AAE134" jdbcType="VARCHAR" property="aae134" />
+    <result column="AAE132" jdbcType="VARCHAR" property="aae132" />
+    <result column="AAE135" jdbcType="VARCHAR" property="aae135" />
+    <result column="AAE102" jdbcType="DATE" property="aae102" />
+    <result column="AAE013" jdbcType="VARCHAR" property="aae013" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EEE111, AEF101, AEE102, AEE103, AEE104, to_char(AEE105,'yyyy-mm-dd') aee105_string,
+    AEE105, to_char(AEE106,'yyyy-mm-dd') aee106_string,AEE106, AAE100, AEE107, AAE011, AAE036, 
+    AAF011, AAE009, AAE010, AAE200, AAE199, AAE202, AAE201, AAE198, AAE203, AAE133, AAE134, 
+    AAE132, AAE135, AAE102, AAE013, AAB301
+  </sql>
+   <sql id="Base_Column_List_Of_Name">
+    EEE111, AEF101, AEE102, AEE103, AEE104,
+     to_char(aee105,'yyyy-MM-dd HH:mm:ss') 
+     AEE105,
+     to_char(aee106,'yyyy-MM-dd HH:mm:ss') 
+     AEE106, AAE100,
+    (select code_name from code_value where code_value.code_type='AEE107' and code_value=aee107)
+    AEE107, AAE011, AAE036, 
+    AAF011, AAE009, AAE010, AAE200, AAE199, AAE202, AAE201, AAE198, AAE203, AAE133, AAE134, 
+    AAE132, AAE135, AAE102, AAE013, AAB301	                   
+  </sql>
+  <insert id="insertSelective" parameterType="com.insigma.mvc.model.Ee11">
+  <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="eee111"> 
+            SELECT SYS_GUID() from dual 
+  </selectKey>
+    insert into EE11
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eee111 != null">
+        EEE111,
+      </if>
+      <if test="aef101 != null">
+        AEF101,
+      </if>
+      <if test="aee102 != null">
+        AEE102,
+      </if>
+      <if test="aee103 != null">
+        AEE103,
+      </if>
+      <if test="aee104 != null">
+        AEE104,
+      </if>
+      <if test="aee105 != null">
+        AEE105,
+      </if>
+      <if test="aee106 != null">
+        AEE106,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="aee107 != null">
+        AEE107,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="aaf011 != null">
+        AAF011,
+      </if>
+      <if test="aae009 != null">
+        AAE009,
+      </if>
+      <if test="aae010 != null">
+        AAE010,
+      </if>
+      <if test="aae200 != null">
+        AAE200,
+      </if>
+      <if test="aae199 != null">
+        AAE199,
+      </if>
+      <if test="aae202 != null">
+        AAE202,
+      </if>
+      <if test="aae201 != null">
+        AAE201,
+      </if>
+      <if test="aae198 != null">
+        AAE198,
+      </if>
+      <if test="aae203 != null">
+        AAE203,
+      </if>
+      <if test="aae133 != null">
+        AAE133,
+      </if>
+      <if test="aae134 != null">
+        AAE134,
+      </if>
+      <if test="aae132 != null">
+        AAE132,
+      </if>
+      <if test="aae135 != null">
+        AAE135,
+      </if>
+      <if test="aae102 != null">
+        AAE102,
+      </if>
+      <if test="aae013 != null">
+        AAE013,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eee111 != null">
+        #{eee111,jdbcType=VARCHAR},
+      </if>
+      <if test="aef101 != null">
+        #{aef101,jdbcType=VARCHAR},
+      </if>
+      <if test="aee102 != null">
+        #{aee102,jdbcType=VARCHAR},
+      </if>
+      <if test="aee103 != null">
+        #{aee103,jdbcType=VARCHAR},
+      </if>
+      <if test="aee104 != null">
+        #{aee104,jdbcType=VARCHAR},
+      </if>
+      <if test="aee105 != null">
+        #{aee105,jdbcType=DATE},
+      </if>
+      <if test="aee106 != null">
+        #{aee106,jdbcType=DATE},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="aee107 != null">
+        #{aee107,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=DATE},
+      </if>
+      <if test="aaf011 != null">
+        #{aaf011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae009 != null">
+        #{aae009,jdbcType=VARCHAR},
+      </if>
+      <if test="aae010 != null">
+        #{aae010,jdbcType=VARCHAR},
+      </if>
+      <if test="aae200 != null">
+        #{aae200,jdbcType=VARCHAR},
+      </if>
+      <if test="aae199 != null">
+        #{aae199,jdbcType=VARCHAR},
+      </if>
+      <if test="aae202 != null">
+        #{aae202,jdbcType=DATE},
+      </if>
+      <if test="aae201 != null">
+        #{aae201,jdbcType=VARCHAR},
+      </if>
+      <if test="aae198 != null">
+        #{aae198,jdbcType=VARCHAR},
+      </if>
+      <if test="aae203 != null">
+        #{aae203,jdbcType=VARCHAR},
+      </if>
+      <if test="aae133 != null">
+        #{aae133,jdbcType=VARCHAR},
+      </if>
+      <if test="aae134 != null">
+        #{aae134,jdbcType=VARCHAR},
+      </if>
+      <if test="aae132 != null">
+        #{aae132,jdbcType=VARCHAR},
+      </if>
+      <if test="aae135 != null">
+        #{aae135,jdbcType=VARCHAR},
+      </if>
+      <if test="aae102 != null">
+        #{aae102,jdbcType=DATE},
+      </if>
+      <if test="aae013 != null">
+        #{aae013,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EE11
+    where EEE111 = #{eee111,jdbcType=VARCHAR}
+  </select>
+  
+   <!-- 通过主键查询中文 -->
+   <select id="selectNameByPrimaryKey" parameterType="java.lang.String" resultType="Ee11">
+    select 
+    <include refid="Base_Column_List_Of_Name" />
+    from EE11
+    where EEE111 = #{eee111,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- ee11查询 -->
+  <select id="getEe11List" parameterType="Ee11" resultType="Ee11">
+    select 
+     <include refid="Base_Column_List_Of_Name" />
+    from EE11 
+    <where>
+      <if test="aee102!=null">
+        aee102 like '%'||#{aee102}||'%'
+      </if>
+      <if test="aee105!=null">
+        and aee105<![CDATA[>= ]]>#{aee105,jdbcType=DATE}
+      </if>
+      <if test="aee106!=null">
+        and aee106<![CDATA[<= ]]>to_date(to_char(#{aee106,jdbcType=DATE},'yyyy-mm-dd')||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+      </if>
+    </where>
+    order by AEE105 desc 
+  </select>
+  
+   <!-- 通过主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from EE11
+    where EEE111 = #{eee111,jdbcType=VARCHAR}
+  </delete>
+  
+   <!-- 批量删除 -->
+  <delete id="batDeleteData"  parameterType="String" >
+       delete from EE11 where eee111 in 
+       <foreach item="selectnodes" collection="array" open="(" separator="," close=")">
+            #{selectnodes}
+       </foreach>
+  </delete>
+  
+  
+  
+    <!-- 获取全部代码类型 -->
+    <select id="getInitcodetypeList"  resultType="CodeType" >
+		select aaa100 code_type from v_code_type  
+	</select>
+  	<!-- 通过代码类型获取对应代码   -->
+	<select id="getInitCodeValueList" parameterType="CodeType" resultType="CodeValue" >
+		 select aaa102 code_value ,aaa103 code_name,aaa106 code_describe  from v_aa10 where aaa100=#{code_type} 
+		  <if test="filter != null">
+	         and ${filter}
+	      </if>
+		 order by aaa102
+	</select>
+	<!-- 代码树 -->
+	<select id="getCodeValueTree"  parameterType="CodeValue" resultType="CodeValue" >
+		<!-- select 
+		code_type ,
+		code_value id,
+		code_name name, 
+		nvl(code_describe,code_name) code_describe, 
+		par_code_value pid,
+		decode(sign((select count(*) from code_value s where s.par_code_value=t.code_value)),'1','true','false') isparent
+		from 
+		code_value t where t.code_type=#{code_type} and par_code_value=#{par_code_value} order by t.code_value -->
+		select code_value id,code_name name from code_value where code_value.code_value like #{code_value} and code_value.code_type='AAB301'  
+		and code_value.code_value &lt;&gt; #{id} 
+	</select>
+	
+	<!-- 根据code_value去查询机构 -->
+	<select id="getAllGroupList"  parameterType="CodeValue" resultType="CodeValue" >
+		select e.aef104 name
+		from code_value t,ef11 e where e.aab301=t.code_value and t.code_type='AAB301' and t.code_value = #{code_value} 	
+	</select>
+	
+	 <!-- 查询机构树数据 -->  
+<!--     <select id="getAllGroupList"  resultType="SGroup" parameterType="String"> -->
+<!-- 		 select groupid id ,'true' open, isparent,t.name -->
+<!-- 		 from (select a.groupid,a.name, decode(sign((select count(*) from s_group s where s.parentid=a.groupid)),'1','true','false') isparent from s_group a where a.parentid=#{parentid}  order by a.groupid ) t -->
+<!-- 	</select> -->
+	<!-- 通过机构id获取机构信息 -->
+	<select id="getGroupDataById" resultType="SGroup" parameterType="String">
+	    select groupid,name,description from s_group t where t.groupid=#{groupid}
+	</select>
+	
+	<update id="updateByPrimaryKey" parameterType="com.insigma.mvc.model.Ee11">
+    update EE11
+    set AEF101 = #{aef101,jdbcType=VARCHAR},
+      AEE102 = #{aee102,jdbcType=VARCHAR},
+      AEE103 = #{aee103,jdbcType=VARCHAR},
+      AEE104 = #{aee104,jdbcType=VARCHAR},
+      AEE105 = #{aee105,jdbcType=DATE},
+      AEE106 = #{aee106,jdbcType=DATE},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      AEE107 = #{aee107,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=DATE},
+      AAF011 = #{aaf011,jdbcType=VARCHAR},
+      AAE009 = #{aae009,jdbcType=VARCHAR},
+      AAE010 = #{aae010,jdbcType=VARCHAR},
+      AAE200 = #{aae200,jdbcType=VARCHAR},
+      AAE199 = #{aae199,jdbcType=VARCHAR},
+      AAE202 = #{aae202,jdbcType=DATE},
+      AAE201 = #{aae201,jdbcType=VARCHAR},
+      AAE198 = #{aae198,jdbcType=VARCHAR},
+      AAE203 = #{aae203,jdbcType=VARCHAR},
+      AAE133 = #{aae133,jdbcType=VARCHAR},
+      AAE134 = #{aae134,jdbcType=VARCHAR},
+      AAE132 = #{aae132,jdbcType=VARCHAR},
+      AAE135 = #{aae135,jdbcType=VARCHAR},
+      AAE102 = #{aae102,jdbcType=DATE},
+      AAE013 = #{aae013,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR}
+    where EEE111 = #{eee111,jdbcType=VARCHAR}
+  </update>
+	
+	
+	
+</mapper>
